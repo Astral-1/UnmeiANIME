@@ -1,2 +1,4 @@
 # UnmeiANIME
-Anime cards EDO didn't script because not all stats were known
+Anime cards missing from EDOPro 
+
+k5rmit
