@@ -43,4 +43,9 @@ function s.flipop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.SendtoHand(g,nil,REASON_EFFECT)
 		Duel.ConfirmCards(1-tp,g)
 	end
+	
+	local tc=Duel.CreateToken(tp,12310003)
+    Duel.SendtoDeck(tc,tp,SEQ_DECKTOP,REASON_EFFECT)
+    Duel.ConfirmCards(tp,tc)
+    Duel.ConfirmCards(tp-1,tc)
 end
