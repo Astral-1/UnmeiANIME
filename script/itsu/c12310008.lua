@@ -1,4 +1,4 @@
---Gradius, go Flight!
+--Gradius, Take off!
 --Scripted by UNMEI for Itsu RP
 local s,id=GetID()
 function s.initial_effect(c)
@@ -42,14 +42,24 @@ function s.initial_effect(c)
 	e4:SetValue(1)
 	e4:SetCondition(s.actcon)
 	c:RegisterEffect(e4)
+	--targetProtect
+	local e5=Effect.CreateEffect(c)
+	e5:SetType(EFFECT_TYPE_FIELD)
+	e5:SetCode(EFFECT_CANNOT_BE_EFFECT_TARGET)
+	e5:SetRange(LOCATION_SZONE)
+	e5:SetProperty(EFFECT_FLAG_IGNORE_IMMUNE)
+	e5:SetTargetRange(LOCATION_MZONE,LOCATION_MZONE)
+	e5:SetTarget(aux.TargetBoolFunction(s.filter))
+	e5:SetValue(aux.tgoval)
+	c:RegisterEffect(e5)
 end
-s.listed_names={54289683}
-function s.thfilter(c)
-	return c:IsCode(54289683) and c:IsAbleToHand()
+--s.listed_names={54289683}
+function s.addfilter(c)
+	return c:IsRace(RACE_MACHINE) and c:IsAttribute(ATTRIBUTE_LIGHT) and c:GetBaseAttack()<1700 and c:IsAbleToHand()
 end
 function s.activate(e,tp,eg,ep,ev,re,r,rp)
 	if not e:GetHandler():IsRelateToEffect(e) then return end
-	local g=Duel.GetMatchingGroup(s.thfilter,tp,LOCATION_DECK,0,nil)
+	local g=Duel.GetMatchingGroup(s.addfilter,tp,LOCATION_GRAVE+LOCATION_DECK,0,nil)
 	if #g>0 and Duel.SelectYesNo(tp,aux.Stringid(id,0)) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
 		local sg=g:Select(tp,1,1,nil)
