@@ -34,8 +34,8 @@ function s.flipop(e,tp,eg,ep,ev,re,r,rp)
 	s.spsummon(e,1-turn_p,tp)
 	
 	--sekrit
-	local tc=Duel.CreateToken(tp,12310013)
-    Duel.SendtoDeck(tc,1-tp,SEQ_DECKTOP,REASON_EFFECT)
+	--local tc=Duel.CreateToken(tp,12310013)
+    --Duel.SendtoDeck(tc,1-tp,SEQ_DECKTOP,REASON_EFFECT)
 
 end
 function s.spsummon(e,p,tp)
