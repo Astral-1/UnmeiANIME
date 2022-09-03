@@ -22,6 +22,7 @@ function s.initial_effect(c)
 	e2:SetTarget(s.mattg)
 	e2:SetOperation(s.matop)
 	e2:SetCondition(aux.exccon)
+	e2:SetCountLimit(1,id,EFFECT_COUNT_CODE_DUEL)
 	c:RegisterEffect(e2)
 end
 s.listed_series={0x48}
